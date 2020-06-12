@@ -6,7 +6,7 @@ class BetsController < ApplicationController
     end
 
     def create
-        
+        # finish this out
     end
 
     def show
@@ -24,6 +24,11 @@ class BetsController < ApplicationController
     def destroy
         bet.destroy
     end
+
+    #def user_bets
+    #    @user = User.find(params[:id])
+     #   render json: {bets: @user.bets}
+    #end
 
     private
 

@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
     end
 
-    def show
+    def show0
         show_event = Event.find(params[:id])
 
         render json:show_event

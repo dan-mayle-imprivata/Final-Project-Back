@@ -1,3 +1,4 @@
+#require_relative '../serializers/user_serializer'
 class AuthController < ApplicationController 
     skip_before_action :authorized, only: [:create]
     def create
@@ -14,7 +15,8 @@ class AuthController < ApplicationController
     end
     
     def show
-        render json: { id: current_user.id, name: current_user.name }
-     end
+        #byebug
+        render json: UserSerializer.new(current_user)
+    end
 
 end

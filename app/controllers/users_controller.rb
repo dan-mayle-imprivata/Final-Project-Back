@@ -10,7 +10,7 @@ class UsersController < ApplicationController
             user.save
             my_token = issue_token(user)
 
-            render json:user {id:user.id, name:user.name, email:user.email, token: my_token}, status: :created 
+            render json: user {id:User, name:user.name, email:user.email, token: my_token}, status: :created 
         else
             render json: {error: user.errors.full_messages}, status: :not_acceptable
         end
