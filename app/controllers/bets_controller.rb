@@ -7,16 +7,14 @@ class BetsController < ApplicationController
 # finish this create out
     def create
         # byebug
-        # new_fight = Fight.create_with(fight_params).find_or_create_by(id:params[:fight][:id])
-        # saved_bet = new_fight.bets.create_with(bet_params).find_or_create_by(fight_id: params[:fight][:id])
+        @bet = Bet.create(bet_params)
 
-        # if saved_bet.valid?
-        #     saved_bet.save
-        #     render json: saved_bet
-        # else
-        #     render json: {errors: saved_bet.errors.full_messages}
-        # end
-
+        if @bet.valid?
+            @bet.save
+            render json: BetSerializer.new(@bet).to_json
+        else
+            render json: {errors: @bet.errors.full_messages}
+        end
     end
 
     def show
@@ -25,7 +23,7 @@ class BetsController < ApplicationController
 
     def update
         if bet.update(bet_params)
-            render json:bet
+            render json: bet
         else
             render json: {errors:bet.errors.full_messages}
         end
@@ -43,11 +41,7 @@ class BetsController < ApplicationController
     private
 
     def bet_params
-        params.require(:bet).permit(:user_id,:fight_id,:amount,:odds,:bet_type,:correct_bet)
-    end
-
-    def fight_params
-        params.require(:fights).permit(:competitor_one,:competitor_two,:rounds,:result)
+        params.require(:bet).permit(:user_id,:fight_id,:fighter,:amount,:odds,:bet_type,:correct_bet)
     end
 
     def find_bet
