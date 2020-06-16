@@ -4,6 +4,7 @@ class CreateBets < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.references :fight, null: false, foreign_key: true
       t.decimal :amount
+      t.string :fighter
       t.string :odds
       t.string :bet_type
       t.boolean :correct_bet

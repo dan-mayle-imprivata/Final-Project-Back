@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_222530) do
     t.integer "user_id", null: false
     t.integer "fight_id", null: false
     t.decimal "amount"
+    t.string "fighter"
     t.string "odds"
     t.string "bet_type"
     t.boolean "correct_bet"
